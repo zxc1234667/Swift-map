@@ -111,7 +111,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         print("\(viewTitle) \(viewSubTitle)")
         
         //Alert을 사용하여 내용을 출력시켜줌.
-        let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .alert)
+        //let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .alert)
+        let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .actionSheet)
+        //actionSheet = alert이 아래쪽에서 나타남.
         
         //OK를 클릭할 시 Alert 종료
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -119,7 +121,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     //Source Control의 push는 처음 github에 업로드 할때, Commit은 수정본을 갱신할 때
-    //
+    //Pull은 github에서 파일을 가져온다.?
+    //local을 클라우드로 설정할 시 다른장소에서도 업로드/다운로드를 할 수 있다.?
+    //java는 github에 업로드 할때 eclipse git plugin(egit)등의 프로그램을 사용하면 할 수 있다.
+    //(터미널 명령어) 참조: http://itmir.tistory.com/461
 
 }
 
