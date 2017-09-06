@@ -125,6 +125,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     //local을 클라우드로 설정할 시 다른장소에서도 업로드/다운로드를 할 수 있다.?
     //java는 github에 업로드 할때 eclipse git plugin(egit)등의 프로그램을 사용하면 할 수 있다.
     //(터미널 명령어) 참조: http://itmir.tistory.com/461
+    //안드로이드 스튜디오 참조: https://git-scm.com/downloads
 
 }
 
