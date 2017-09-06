@@ -99,19 +99,26 @@ class ViewController: UIViewController, MKMapViewDelegate {
     //Pin을 Tap했을때 발생하는 이밴트 제어
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
+        //확인용 print
         print("callout Accessory Tapped!")
         
+        //Alert에 사용하기 위해 정의
         let viewAnno = view.annotation
-        let viewTitle: String = ((viewAnno?.title)!)!
-        let viewSubTitle: String = ((viewAnno?.subtitle)!)!
+        let viewTitle: String = ((viewAnno?.title)!)!       //Pin의 title
+        let viewSubTitle: String = ((viewAnno?.subtitle)!)! //Pin의 subtitle
         
+        //정의된 내용 확인
         print("\(viewTitle) \(viewSubTitle)")
         
         //Alert을 사용하여 내용을 출력시켜줌.
         let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .alert)
+        
+        //OK를 클릭할 시 Alert 종료
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(ac, animated: true, completion: nil)
     }
+    
+    //Source Control의 push는 처음 github에 업로드 할때, Commit은 수정본을 갱신할 때
 
 }
 
