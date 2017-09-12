@@ -14,8 +14,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //ViewPoint로 Class를 만들어서 위도경도에 따른 지역이름 입력.
+        let a = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.167158, 129.072063), title: "성모여자고등학교", subtitle: "성모여자고등학교")
         
+        let b = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.164974, 129.071049), title: "동의중학교", subtitle: "동의중학교")
+        
+        let c = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.173086, 129.071381), title: "양정역", subtitle: "양정역(지하철)")
+        
+        let d = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.166197, 129.072594), title: "동의과학대학교", subtitle: "동의과학대학교(DIT)")
+        
+        /*
         //  지도의 center 위치, DIT 위치정보 35.166197, 129.072594
         let center = CLLocationCoordinate2DMake(35.166197, 129.072594)
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -48,9 +56,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
         //지도에 핀을 생성
         myMapView.addAnnotation(anno01)
         myMapView.addAnnotation(anno02)
+        */
+        
+        myMapView.addAnnotation(a)
+        myMapView.addAnnotation(b)
+        myMapView.addAnnotation(c)
+        myMapView.addAnnotation(d)
         
         //delegate 연결
         myMapView.delegate = self
+        
+        
     }
     
     // MKMapViewDelegate method

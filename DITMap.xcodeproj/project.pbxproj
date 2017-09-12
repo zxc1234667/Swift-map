@@ -15,6 +15,7 @@
 		051D91641F57D506000A0D18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051D91631F57D506000A0D18 /* Assets.xcassets */; };
 		051D91671F57D506000A0D18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051D91651F57D506000A0D18 /* LaunchScreen.storyboard */; };
 		051D91701F57D660000A0D18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051D916F1F57D660000A0D18 /* MapKit.framework */; };
+		744C7B6D1F67B3F900246508 /* ViewPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744C7B6C1F67B3F900246508 /* ViewPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		051D91661F57D506000A0D18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		051D91681F57D506000A0D18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		051D916F1F57D660000A0D18 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		744C7B6C1F67B3F900246508 /* ViewPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				050ED4CF1F5E82EA0085EEA2 /* citizen_logo.png */,
 				051D915C1F57D506000A0D18 /* AppDelegate.swift */,
 				051D915E1F57D506000A0D18 /* ViewController.swift */,
+				744C7B6C1F67B3F900246508 /* ViewPoint.swift */,
 				051D91601F57D506000A0D18 /* Main.storyboard */,
 				051D91631F57D506000A0D18 /* Assets.xcassets */,
 				051D91651F57D506000A0D18 /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				051D915F1F57D506000A0D18 /* ViewController.swift in Sources */,
+				744C7B6D1F67B3F900246508 /* ViewPoint.swift in Sources */,
 				051D915D1F57D506000A0D18 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
