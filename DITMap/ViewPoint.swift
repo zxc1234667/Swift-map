@@ -14,7 +14,7 @@ class ViewPoint: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
-    var info: String?
+    //var info: String?
     
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         

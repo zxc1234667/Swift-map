@@ -14,14 +14,21 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ViewPoint로 Class를 만들어서 위도경도에 따른 지역이름 입력.
+        
+        // 해당위치를 확대시켜준다.
+        zoomToRegion()
+        
+        // ViewPoint로 Class를 만들어서 위도경도에 따른 지역이름 입력.
         let a = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.167158, 129.072063), title: "성모여자고등학교", subtitle: "성모여자고등학교")
         
         let b = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.164974, 129.071049), title: "동의중학교", subtitle: "동의중학교")
         
         let c = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.173086, 129.071381), title: "양정역", subtitle: "양정역(지하철)")
         
-        let d = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.166197, 129.072594), title: "동의과학대학교", subtitle: "동의과학대학교(DIT)")
+        let d = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.166197, 129.072594), title: "DIT 동의과학대학교", subtitle: "동의과학대학교")
+        
+        let e = ViewPoint(coordinate: CLLocationCoordinate2DMake(35.168444, 129.057832), title: "부산시민공원", subtitle: "부산시민공원")
+        
         
         /*
         //  지도의 center 위치, DIT 위치정보 35.166197, 129.072594
@@ -53,7 +60,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         anno02.title = "부산시민공원"
         anno02.subtitle = "부산시민들의 휴식처"
         
-        //지도에 핀을 생성
+        // 지도에 핀을 생성
         myMapView.addAnnotation(anno01)
         myMapView.addAnnotation(anno02)
         */
@@ -62,10 +69,27 @@ class ViewController: UIViewController, MKMapViewDelegate {
         myMapView.addAnnotation(b)
         myMapView.addAnnotation(c)
         myMapView.addAnnotation(d)
+        myMapView.addAnnotation(e)
         
-        //delegate 연결
+        
+        // 초기 지정
+        //myMapView.selectedAnnotations(a, animated: Bool)
+        
+        // delegate 연결
         myMapView.delegate = self
         
+        
+    }
+    
+    // 초기위치에 대한 확대
+    func zoomToRegion(){
+        
+        // 확대시킬 기준 좌표
+        let location = CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594)
+        
+        // 확대시킬 배율
+        let region = MKCoordinateRegionMakeWithDistance(location, 2000.0, 4000.3)
+        myMapView.setRegion(region, animated: true)
         
     }
     
@@ -75,6 +99,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         //pin의 재활용
         let identifier = "MyPin"
         var  annotationView = myMapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        
         
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -115,33 +140,63 @@ class ViewController: UIViewController, MKMapViewDelegate {
     //Pin을 Tap했을때 발생하는 이밴트 제어
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        //확인용 print
-        print("callout Accessory Tapped!")
+        if control == view.rightCalloutAccessoryView {
+            
+            // 뷰가 이동할때 값을 다른 화면으로 넘겨주도록 한다를 해야한다.
+            
+            
+            // 강제 화면전환
+            self.performSegue(withIdentifier: "goDetail", sender: self)
+            
+        }
         
-        //Alert에 사용하기 위해 정의
-        let viewAnno = view.annotation
-        let viewTitle: String = ((viewAnno?.title)!)!       //Pin의 title
-        let viewSubTitle: String = ((viewAnno?.subtitle)!)! //Pin의 subtitle
         
-        //정의된 내용 확인
-        print("\(viewTitle) \(viewSubTitle)")
         
-        //Alert을 사용하여 내용을 출력시켜줌.
-        //let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .alert)
-        let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .actionSheet)
-        //actionSheet = alert이 아래쪽에서 나타남.
         
-        //OK를 클릭할 시 Alert 종료
-        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(ac, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        //확인용 print
+//        print("callout Accessory Tapped!")
+//        
+//        //Alert에 사용하기 위해 정의
+//        let viewAnno = view.annotation
+//        let viewTitle: String = ((viewAnno?.title)!)!       //Pin의 title
+//        let viewSubTitle: String = ((viewAnno?.subtitle)!)! //Pin의 subtitle
+//        
+//        //정의된 내용 확인
+//        print("\(viewTitle) \(viewSubTitle)")
+//        
+//        //Alert을 사용하여 내용을 출력시켜줌.
+//        //let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .alert)
+//        let ac = UIAlertController(title: viewTitle, message: viewSubTitle, preferredStyle: .actionSheet)
+//        //actionSheet = alert이 아래쪽에서 나타남.
+//        
+//        //OK를 클릭할 시 Alert 종료
+//        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//        present(ac, animated: true, completion: nil)
+        
+        
     }
     
-    //Source Control의 push는 처음 github에 업로드 할때, Commit은 수정본을 갱신할 때
-    //Pull은 github에서 파일을 가져온다.?
-    //local을 클라우드로 설정할 시 다른장소에서도 업로드/다운로드를 할 수 있다.?
-    //java는 github에 업로드 할때 eclipse git plugin(egit)등의 프로그램을 사용하면 할 수 있다.
-    //(터미널 명령어) 참조: http://itmir.tistory.com/461
-    //안드로이드 스튜디오 참조: https://git-scm.com/downloads
+    // command + / = 지정부분 전체 주석처리
+    // Source Control의 push는 처음 github에 업로드 할때, Commit은 수정본을 갱신할 때
+    // Pull은 github에서 파일을 가져온다.?
+    // local을 클라우드로 설정할 시 다른장소에서도 업로드/다운로드를 할 수 있다.?
+    // java는 github에 업로드 할때 eclipse git plugin(egit)등의 프로그램을 사용하면 할 수 있다.
+    // (터미널 명령어) 참조: http://itmir.tistory.com/461
+    // 안드로이드 스튜디오 참조: https://git-scm.com/downloads
 
 }
 
